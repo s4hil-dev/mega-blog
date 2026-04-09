@@ -33,7 +33,7 @@ MegaBlog lets users sign up, log in, create posts, edit posts, upload featured i
 
 ```bash
 git clone <your-repo-url>
-cd megaBlog
+cd mega-blog
 ```
 
 ### 2. Install dependencies
@@ -54,10 +54,6 @@ VITE_APPWRITE_COLLECTION_ID=your_appwrite_collection_id
 VITE_APPWRITE_BUCKET_ID=your_appwrite_bucket_id
 VITE_TINYMCE_API_KEY=your_tinymce_api_key
 ```
-
-Important:
-- Do not commit real API keys or production credentials to GitHub.
-- If any real keys were already committed, rotate them before publishing the repo.
 
 ### 4. Start the development server
 
@@ -127,4 +123,4 @@ src/
 
 ## License
 
-This project is available for personal and educational use. Update this section if you want to add a specific license such as MIT.
+This project is available for personal and educational use.
