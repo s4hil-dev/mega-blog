@@ -27,26 +27,27 @@ function Signup() {
     }
 
   return (
-    <div className="flex items-center justify-center">
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-            <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
+    <div className="flex min-h-[70vh] items-center justify-center py-8">
+            <div className='glass-panel mx-auto w-full max-w-xl rounded-[32px] p-8 sm:p-10'>
+            <div className="mb-4 flex justify-center">
+                    <span className="inline-block w-full max-w-[110px]">
                         <Logo width="100%" />
                     </span>
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-[var(--muted)]">Join MegaBlog</p>
+                <h2 className="hero-title mt-3 text-center text-5xl font-bold leading-none text-[var(--text)]">Create your publishing space</h2>
+                <p className="mt-4 text-center text-base leading-7 text-[var(--muted)]">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
+                        className="font-semibold text-[var(--accent-deep)] transition-all duration-200 hover:underline"
                     >
                         Sign In
                     </Link>
                 </p>
-                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                {error && <p className="mt-8 rounded-2xl bg-[rgba(182,63,37,0.08)] px-4 py-3 text-center text-sm font-medium text-[#8d2f1d]">{error}</p>}
 
-                <form onSubmit={handleSubmit(create)}>
+                <form onSubmit={handleSubmit(create)} className='mt-8'>
                     <div className='space-y-5'>
                         <Input
                         label="Full Name: "

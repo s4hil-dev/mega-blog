@@ -25,10 +25,10 @@ const App = () => {
 
   return !loading ? (
     <>
-      <div className='min-h-screen flex flex-wrap content-between bg-gray-600'>
-        <div className='w-full'>
+      <div className='app-shell'>
+        <div className='relative z-10 flex min-h-screen flex-col'>
           <Header />
-          <main>
+          <main className='flex-1 pb-28 lg:pb-16'>
             <Outlet />
           </main>
           <Footer />

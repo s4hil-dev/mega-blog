@@ -6,13 +6,14 @@ import {Controller } from 'react-hook-form';
 export default function RTE({name, control, label, defaultValue =""}) {
   return (
     <div className='w-full'> 
-    {label && <label className='inline-block mb-1 pl-1'>{label}</label>}
+    {label && <label className='mb-2 inline-block pl-1 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--muted)]'>{label}</label>}
 
     <Controller
     name={name || "content"}
     control={control}
     render={({field: {onChange}}) => (
         <Editor
+        apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
         initialValue={defaultValue}
         init={{
             initialValue: defaultValue,

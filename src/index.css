@@ -1,3 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg: #f5efe6;
+    --surface: rgba(255, 252, 247, 0.82);
+    --border: rgba(93, 64, 55, 0.12);
+    --text: #241711;
+    --muted: #6c544a;
+    --accent: #bf6d3a;
+    --accent-deep: #8a4424;
+    --shadow: 0 24px 70px rgba(63, 37, 28, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background:
+      radial-gradient(circle at top left, rgba(191, 109, 58, 0.18), transparent 30%),
+      radial-gradient(circle at top right, rgba(121, 86, 72, 0.16), transparent 24%),
+      linear-gradient(180deg, #f7f1e7 0%, #f4eadf 48%, #efe0d1 100%);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .app-shell {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-shell::before,
+  .app-shell::after {
+    content: '';
+    position: fixed;
+    border-radius: 9999px;
+    pointer-events: none;
+    filter: blur(22px);
+    opacity: 0.65;
+  }
+
+  .app-shell::before {
+    width: 18rem;
+    height: 18rem;
+    top: 5rem;
+    left: -4rem;
+    background: rgba(191, 109, 58, 0.18);
+  }
+
+  .app-shell::after {
+    width: 16rem;
+    height: 16rem;
+    right: -4rem;
+    bottom: 8rem;
+    background: rgba(108, 84, 74, 0.16);
+  }
+
+  .glass-panel {
+    background: var(--surface);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.03em;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.02em;
+  }
+
+  .rich-content {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .rich-content h1,
+  .rich-content h2,
+  .rich-content h3,
+  .rich-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.15;
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+  }
+
+  .rich-content p,
+  .rich-content ul,
+  .rich-content ol,
+  .rich-content blockquote {
+    margin-bottom: 1rem;
+  }
+
+  .rich-content ul,
+  .rich-content ol {
+    padding-left: 1.3rem;
+  }
+
+  .rich-content blockquote {
+    border-left: 3px solid rgba(191, 109, 58, 0.45);
+    padding-left: 1rem;
+    color: var(--muted);
+  }
+
+  .editor-shell .tox-tinymce {
+    border-radius: 1.25rem !important;
+    overflow: hidden;
+    border: 1px solid rgba(93, 64, 55, 0.14) !important;
+    box-shadow: 0 18px 40px rgba(36, 23, 17, 0.08);
+  }
+
+  .post-reveal {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+
+  .post-reveal-visible {
+    animation: postReveal 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .mobile-sidebar {
+    background: linear-gradient(180deg, rgba(252, 246, 238, 0.99) 0%, rgba(245, 235, 223, 0.99) 100%);
+    box-shadow: -18px 0 40px rgba(36, 23, 17, 0.14);
+  }
+}
+
+@keyframes postReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

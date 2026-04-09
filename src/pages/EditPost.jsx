@@ -1,46 +1,38 @@
 import React, {useEffect, useState} from 'react'
+import {Container, Postform} from '../components'
 import appwriteService from "../appwrite/config";
-import {Container, PostCard} from '../components'
+import { useNavigate, useParams } from 'react-router-dom';
 
-function Home() {
-    const [posts, setPosts] = useState([])
+function EditPost() {
+    const [post, setPost] = useState(null)
+    const {slug} = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        appwriteService.getPosts().then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
-            }
-        })
-    }, [])
-  
-    if (posts.length === 0) {
-        return (
-            <div className="w-full py-8 mt-4 text-center">
-                <Container>
-                    <div className="flex flex-wrap">
-                        <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
-                            </h1>
-                        </div>
-                    </div>
-                </Container>
-            </div>
-        )
-    }
-    return (
-        <div className='w-full py-8'>
+        if (slug) {
+            appwriteService.getPost(slug).then((fetchedPost) => {
+                if (fetchedPost) {
+                    setPost(fetchedPost)
+                } else {
+                    navigate('/')
+                }
+            })
+        } else {
+            navigate('/')
+        }
+    }, [slug, navigate])
+
+    return post ? (
+        <section className='py-10 sm:py-14'>
             <Container>
-                <div className='flex flex-wrap'>
-                    {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard {...post} />
-                        </div>
-                    ))}
+                <div className='mb-8'>
+                    <p className='text-xs font-semibold uppercase tracking-[0.34em] text-[var(--muted)]'>Editor</p>
+                    <h1 className='hero-title mt-3 text-5xl font-bold leading-none text-[var(--text)] sm:text-6xl'>Refine your story</h1>
                 </div>
+                <Postform post={post} />
             </Container>
-        </div>
-    )
+        </section>
+    ) : null
 }
 
-export default Home
+export default EditPost
