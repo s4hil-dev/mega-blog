@@ -8,9 +8,9 @@ function SimpleFooter() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 rounded-[34px] border border-[rgba(93,64,55,0.12)] bg-[rgba(255,250,242,0.72)] p-6 shadow-[0_12px_24px_rgba(36,23,17,0.05)] sm:p-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
-            <div className="mb-4 inline-flex items-center">
+            {/* <div className="mb-4 inline-flex items-center">
               <Logo width="100px" />
-            </div>
+            </div> */}
             <p className="text-sm leading-7 text-[var(--muted)]">
               Thoughtful publishing for longer-form writing, built around calm color, generous spacing, and readable typography.
             </p>
